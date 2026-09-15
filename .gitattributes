@@ -1,0 +1,10 @@
+# Normalise line endings in the repository; check out what each platform needs.
+* text=auto eol=lf
+
+# Windows shells need CRLF in batch files.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+*.jar binary
+*.apk binary
+*.png binary
