@@ -16,6 +16,36 @@ close ────────────────────────�
 
 ---
 
+## Run it
+
+No Android Studio, no SDK setup, nothing to install by hand. Open a terminal in
+the project folder and run three things in order.
+
+### Windows
+
+1. **`download-tools.cmd`** — once per machine. Downloads the JDK, the Android
+   SDK and Gradle into `tools\`; anything you already have is reused instead.
+   Takes a few minutes the first time, seconds ever after.
+2. **`build.cmd`** — builds the app. The APK lands in
+   `out\depth-cam-debug.apk`.
+3. **`build.cmd --install`** — deploys it to the phone: plug it in over USB,
+   enable USB debugging, accept the prompt on the phone, run this.
+
+### Linux / macOS
+
+1. **`./download-tools.sh`** — once per machine. Downloads the JDK, the Android
+   SDK and Gradle into `tools/`; anything you already have is reused instead.
+   Needs `curl` and `unzip`.
+2. **`./build.sh`** — builds the app. The APK lands in
+   `out/depth-cam-debug.apk`.
+3. **`./build.sh --install`** — deploys it to the phone: plug it in over USB,
+   enable USB debugging, accept the prompt on the phone, run this.
+
+No phone cable handy? Copy `out/depth-cam-debug.apk` to the device and tap it.
+Details, options and release builds are under [Building](#building).
+
+---
+
 ## What it does
 
 * **Finds the depth sensor even when the OEM hides it.** Listed cameras are
@@ -123,17 +153,8 @@ server address; without a port, 80 is used.
 
 ## Building
 
-Two scripts, no IDE, nothing to install by hand.
-
-```bash
-./download-tools.sh     # one time: fetches the toolchain
-./build.sh              # builds out/depth-cam-debug.apk
-```
-
-```cmd
-download-tools.cmd
-build.cmd
-```
+The three commands are in [Run it](#run-it); this section is what they do and
+how to steer them.
 
 `download-tools` needs `curl` and `unzip` on Unix (PowerShell does the work on
 Windows) and about 1.5 GB of disk. It fetches:
